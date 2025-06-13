@@ -1,0 +1,21 @@
+{
+  "name": ".",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@uniswap/sdk-core": "3.0.1",
+    "@uniswap/v3-core": "1.0.1",
+    "@uniswap/v3-periphery": "1.4.1",
+    "@uniswap/v3-sdk": "3.8.2",
+    "dotenv": "^16.5.0",
+    "ethers": "5.6.4",
+    "hardhat": "2.10.1",
+    "jsbi": "^4.3.2"
+  }
+}
