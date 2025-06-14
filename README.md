@@ -6,6 +6,8 @@ This project allows users to swap tokens, add liquidity to pools, and manage the
 
 ## Architectural Overview
 
+![Diagram] (images/img2.png)
+
 The project follows a modular architecture, with distinct components for swapping tokens, managing liquidity, and handling user interactions. The key components include:
 
 - **`app/swaps/`**: This directory contains the core logic for swapping tokens. It includes modules for:
