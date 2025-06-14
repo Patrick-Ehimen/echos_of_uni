@@ -6,6 +6,36 @@ This project allows users to swap tokens, add liquidity to pools, and manage the
 
 ## Architectural Overview
 
+graph TD
+
+    938["User<br>External Actor"]
+    subgraph 930["External Systems"]
+        939["Ethereum Blockchain<br>EVM, Uniswap"]
+    end
+    subgraph 931["Blockchain Interaction Scripts<br>TypeScript, Ethers.js"]
+        932["Token &amp; Contract Config<br>TypeScript"]
+        933["Contract ABI Definitions<br>TypeScript"]
+        934["Custom Type Definitions<br>TypeScript"]
+        935["Blockchain Utilities<br>TypeScript, Ethers.js"]
+        936["Swap Operations<br>TypeScript, Ethers.js"]
+        937["Liquidity Management<br>TypeScript, Ethers.js"]
+        %% Edges at this level (grouped by source)
+        935["Blockchain Utilities<br>TypeScript, Ethers.js"] -->|uses| 932["Token &amp; Contract Config<br>TypeScript"]
+        935["Blockchain Utilities<br>TypeScript, Ethers.js"] -->|uses| 934["Custom Type Definitions<br>TypeScript"]
+        936["Swap Operations<br>TypeScript, Ethers.js"] -->|uses| 932["Token &amp; Contract Config<br>TypeScript"]
+        936["Swap Operations<br>TypeScript, Ethers.js"] -->|uses| 935["Blockchain Utilities<br>TypeScript, Ethers.js"]
+        937["Liquidity Management<br>TypeScript, Ethers.js"] -->|uses| 933["Contract ABI Definitions<br>TypeScript"]
+        937["Liquidity Management<br>TypeScript, Ethers.js"] -->|uses| 934["Custom Type Definitions<br>TypeScript"]
+        937["Liquidity Management<br>TypeScript, Ethers.js"] -->|uses| 935["Blockchain Utilities<br>TypeScript, Ethers.js"]
+    end
+    %% Edges at this level (grouped by source)
+    935["Blockchain Utilities<br>TypeScript, Ethers.js"] -->|connects to| 939["Ethereum Blockchain<br>EVM, Uniswap"]
+    936["Swap Operations<br>TypeScript, Ethers.js"] -->|interacts with| 939["Ethereum Blockchain<br>EVM, Uniswap"]
+    937["Liquidity Management<br>TypeScript, Ethers.js"] -->|interacts with| 939["Ethereum Blockchain<br>EVM, Uniswap"]
+    938["User<br>External Actor"] -->|initiates swap| 936["Swap Operations<br>TypeScript, Ethers.js"]
+    938["User<br>External Actor"] -->|manages liquidity| 937["Liquidity Management<br>TypeScript, Ethers.js"]
+
+
 The project follows a modular architecture, with distinct components for swapping tokens, managing liquidity, and handling user interactions. The key components include:
 
 - **`app/swaps/`**: This directory contains the core logic for swapping tokens. It includes modules for:
